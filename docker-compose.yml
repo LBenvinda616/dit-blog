@@ -50,7 +50,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        VITE_API_BASE_URL: http://localhost:3000/api
+        VITE_API_BASE_URL: http://13.51.161.44:3000/api
     container_name: dit_blog_frontend
     restart: unless-stopped
     ports:
