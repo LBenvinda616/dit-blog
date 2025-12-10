@@ -71,20 +71,20 @@ Once connected via SSH, run these commands:
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# Install Docker
+# Install Docker (engine + compose plugin)
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
 # Add ubuntu user to docker group (so you don't need sudo)
 sudo usermod -aG docker ubuntu
 
-# Install Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.20.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+# Ensure latest compose plugin
+sudo apt-get update
+sudo apt-get install -y docker-compose-plugin
 
-# Verify installations
+# Verify installations (note the space in `docker compose`)
 docker --version
-docker-compose --version
+docker compose version
 
 # Log out and back in for docker group change to take effect
 exit
@@ -161,17 +161,17 @@ Save the file.
 cd /home/ubuntu/dit_blog
 
 # Build and start all services (runs in background)
-docker-compose up -d --build
+docker compose up -d --build
 
 # Check status
-docker-compose ps
+docker compose ps
 
 # View logs
-docker-compose logs -f
+docker compose logs -f
 
 # View specific service logs
-docker-compose logs -f backend
-docker-compose logs -f frontend
+docker compose logs -f backend
+docker compose logs -f frontend
 ```
 
 ---
