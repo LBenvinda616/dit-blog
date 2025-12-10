@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: dit_blog_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-dit_blog}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASS:-postgres}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db_scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - dit_blog_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dit_blog_backend
+    restart: unless-stopped
+    environment:
+      DB_HOST: postgres
+      DB_NAME: ${DB_NAME:-dit_blog}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASS: ${DB_PASS:-postgres}
+      HF_TOKEN: ${HF_TOKEN}
+      RATE_LIMIT_MAX_REQUESTS: ${RATE_LIMIT_MAX_REQUESTS:-3}
+      RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-300}
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    networks:
+      - dit_blog_network
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:3000/api
+    container_name: dit_blog_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - dit_blog_network
+    depends_on:
+      - backend
+
+networks:
+  dit_blog_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
