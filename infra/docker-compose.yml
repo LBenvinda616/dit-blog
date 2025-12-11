@@ -61,3 +61,5 @@ networks:
 
 volumes:
   postgres_data:
+    external: true
+    name: dit-blog_postgres_data
