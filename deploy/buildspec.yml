@@ -13,11 +13,7 @@ env:
   variables:
     AWS_ACCOUNT_ID: "828414850187"
     AWS_DEFAULT_REGION: "eu-north-1"
-
-artifacts:
-  files: []
-
-env:
+    # Set INSTANCE_ID in the CodeBuild project environment
   variables:
     AWS_ACCOUNT_ID: "828414850187"
     AWS_DEFAULT_REGION: "eu-north-1"
