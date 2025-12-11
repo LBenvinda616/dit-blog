@@ -15,9 +15,9 @@ echo "Logging in to ECR..."
 aws ecr get-login-password --region "$REGION" | docker login --username AWS --password-stdin "$REPO_URI"
 
 echo "Pulling latest images..."
-docker compose pull
+docker compose pull --ignore-pull-failures
 
-echo "Restarting services..."
-docker compose up -d --force-recreate --remove-orphans
+echo "Restarting services with fresh images..."
+docker compose up -d --pull always --force-recreate --remove-orphans
 
 echo "Done."

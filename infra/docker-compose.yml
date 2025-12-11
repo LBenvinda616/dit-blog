@@ -24,6 +24,7 @@ services:
 
   backend:
     image: 828414850187.dkr.ecr.eu-north-1.amazonaws.com/dit-blog-backend:latest
+    pull_policy: always
     container_name: dit_blog_backend
     restart: unless-stopped
     env_file:
@@ -46,6 +47,7 @@ services:
 
   frontend:
     image: 828414850187.dkr.ecr.eu-north-1.amazonaws.com/dit-blog-frontend:latest
+    pull_policy: always
     container_name: dit_blog_frontend
     restart: unless-stopped
     ports:
