@@ -12,10 +12,9 @@ phases:
           --document-name "AWS-RunShellScript" \
           --comment "Deploy dit-blog containers" \
           --parameters commands="[\
-            'cd /home/ubuntu/dit-blog',\
-            'aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI',\
-            'docker compose pull',\
-            'docker compose up -d --force-recreate --remove-orphans'\
+            'cd /home/ubuntu/dit-blog/infra',\
+            'chmod +x scripts/deploy.sh',\
+            'AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION ./scripts/deploy.sh /home/ubuntu/dit-blog/infra'\
           ]"
 
 artifacts:

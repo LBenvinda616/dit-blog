@@ -1,6 +1,10 @@
 const Article = require("../models/Article");
-const aiService = require("../services/aiService");
+const aiClient = require("../services/aiClient");
 
+/**
+ * POST /api/articles/generate
+ * Generate and persist a new article from a user topic.
+ */
 exports.generateNewArticle = async (req, res) => {
     try {
         const { topic } = req.body;
@@ -10,7 +14,7 @@ exports.generateNewArticle = async (req, res) => {
         }
 
         // Generate text using AI
-        const { title, content } = await aiService.generateArticle(topic);
+        const { title, content } = await aiClient.generateArticle(topic);
 
         // Save to database
         const newArticle = await Article.create({
@@ -27,11 +31,19 @@ exports.generateNewArticle = async (req, res) => {
     }
 };
 
+/**
+ * GET /api/articles
+ * List all articles, newest first.
+ */
 exports.getAllArticles = async (req, res) => {
     const articles = await Article.findAll({ order: [["createdAt", "DESC"]] });
     res.json(articles);
 };
 
+/**
+ * GET /api/articles/:id
+ * Fetch a single article by primary key.
+ */
 exports.getArticleById = async (req, res) => {
     const article = await Article.findByPk(req.params.id);
 
@@ -42,6 +54,10 @@ exports.getArticleById = async (req, res) => {
     res.json(article);
 };
 
+/**
+ * DELETE /api/articles/:id
+ * Remove an article by primary key.
+ */
 exports.deleteArticle = async (req, res) => {
     try {
         const article = await Article.findByPk(req.params.id);

@@ -23,7 +23,7 @@ function extractTitle(htmlContent, fallbackTopic) {
  * @param {string} topic - Topic the article should cover.
  * @returns {Promise<{title: string, content: string}>} Title and HTML content.
  */
-exports.generateArticle = async (topic) => {
+async function generateArticle(topic) {
     const data = {
         model: "google/gemma-2-2b-it",
         messages: [
@@ -59,4 +59,6 @@ exports.generateArticle = async (topic) => {
     const title = extractTitle(generatedText, topic);
 
     return { title, content: generatedText };
-};
+}
+
+module.exports = { generateArticle };

@@ -1,5 +1,8 @@
 const { Sequelize } = require("sequelize");
 
+/**
+ * Sequelize connection to Postgres using env configuration.
+ */
 const sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,

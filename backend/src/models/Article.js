@@ -1,6 +1,10 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
+/**
+ * Sequelize model for blog articles.
+ * Fields: title, content (HTML), origin (user|automated).
+ */
 const Article = sequelize.define("Article", {
     title: {
         type: DataTypes.STRING,

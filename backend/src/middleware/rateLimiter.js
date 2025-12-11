@@ -11,8 +11,8 @@ const RATE_LIMIT_CONFIG = {
 const requestStore = new Map();
 
 /**
- * Rate limiter middleware for article generation
- * Tracks requests per IP address
+ * Rate limiter middleware for article generation.
+ * Tracks requests per IP address.
  */
 function rateLimiter(req, res, next) {
     const clientIp = req.ip || req.connection.remoteAddress || 'unknown';
@@ -57,7 +57,7 @@ function rateLimiter(req, res, next) {
 }
 
 /**
- * Cleanup old entries from memory store (runs every 5 minutes)
+ * Cleanup old entries from memory store (runs every 5 minutes).
  */
 function cleanupStoreInterval() {
     setInterval(() => {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
-import HomePage from './components/HomePage';
-import ArchivePage from './components/ArchivePage';
-import ArticleDetailPage from './components/ArticleDetailPage';
 import GenerateForm from './components/GenerateForm';
-import { fetchArticles, generateArticle } from './api';
+import HomePage from './pages/HomePage';
+import ArchivePage from './pages/ArchivePage';
+import ArticleDetailPage from './pages/ArticleDetailPage';
+import { fetchArticles, generateArticle } from './api/client';
 
 function App() {
     const [articles, setArticles] = useState([]);

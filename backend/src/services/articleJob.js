@@ -1,8 +1,8 @@
 require("dotenv").config();
-const Article = require("../models/Article");
-const aiService = require("../services/aiService");
 const fs = require("fs");
 const path = require("path");
+const Article = require("../models/Article");
+const aiClient = require("./aiClient");
 
 /**
  * Load article topics from JSON file.
@@ -43,7 +43,7 @@ async function generateDailyArticle() {
         const topic = getRandomTopic(topics);
 
         console.log(`Generating article about: ${topic}`);
-        const { title, content } = await aiService.generateArticle(topic);
+        const { title, content } = await aiClient.generateArticle(topic);
 
         const newArticle = await Article.create({
             title,
