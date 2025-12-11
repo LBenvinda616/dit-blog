@@ -15,7 +15,7 @@ phases:
             'cd /home/ubuntu/dit-blog',\
             'aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI',\
             'docker compose pull',\
-            'docker compose up -d'\
+            'docker compose up -d --force-recreate --remove-orphans'\
           ]"
 
 artifacts:
