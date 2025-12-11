@@ -28,8 +28,8 @@ phases:
       - docker push $BACKEND_REPO_URI:latest
       - docker push $BACKEND_REPO_URI:$IMAGE_TAG
       - echo Build completed
-      # - echo Triggering deployment...
-      # - aws codebuild start-build --project-name dit-blog-deploy --region $AWS_DEFAULT_REGION
+      - echo Triggering deployment...
+      - aws codebuild start-build --project-name dit-blog-deploy --region $AWS_DEFAULT_REGION
 
 env:
   variables:
