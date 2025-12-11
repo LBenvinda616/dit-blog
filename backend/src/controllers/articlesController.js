@@ -41,3 +41,19 @@ exports.getArticleById = async (req, res) => {
 
     res.json(article);
 };
+
+exports.deleteArticle = async (req, res) => {
+    try {
+        const article = await Article.findByPk(req.params.id);
+
+        if (!article) {
+            return res.status(404).json({ error: "Article not found" });
+        }
+
+        await article.destroy();
+        res.json({ message: "Article deleted successfully", id: req.params.id });
+    } catch (error) {
+        console.error("Error deleting article:", error);
+        res.status(500).json({ error: error.message });
+    }
+};

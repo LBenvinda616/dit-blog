@@ -6,6 +6,7 @@ const { rateLimiter } = require("../middleware/rateLimiter");
 router.get("/", controller.getAllArticles);
 router.get("/:id", controller.getArticleById);
 router.post("/generate", rateLimiter, controller.generateNewArticle);
+router.delete("/:id", controller.deleteArticle);
 
 
 module.exports = router;
