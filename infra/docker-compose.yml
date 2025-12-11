@@ -33,7 +33,6 @@ services:
       DB_NAME: ${DB_NAME:-dit_blog}
       DB_USER: ${DB_USER:-postgres}
       DB_PASS: ${DB_PASS:-postgres}
-      HF_TOKEN: ${HF_TOKEN}
       RATE_LIMIT_MAX_REQUESTS: ${RATE_LIMIT_MAX_REQUESTS:-3}
       RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-300}
       NODE_ENV: production
