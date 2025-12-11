@@ -13,7 +13,7 @@ function ArticleList({ articles, onRefresh }) {
     return (
         <section className="feed">
             <div className="feed__head">
-                <h2>Latest transmissions</h2>
+                <h2>Latest AI hallucinations</h2>
                 <button className="button button--ghost" onClick={onRefresh}>Refresh</button>
             </div>
             <div className="feed__list">

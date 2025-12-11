@@ -10,11 +10,11 @@ exports.generateNewArticle = async (req, res) => {
         }
 
         // Generate text using AI
-        const content = await aiService.generateArticle(topic);
+        const { title, content } = await aiService.generateArticle(topic);
 
         // Save to database
         const newArticle = await Article.create({
-            title: `Article about ${topic}`,
+            title,
             content,
             origin: "user",
         });

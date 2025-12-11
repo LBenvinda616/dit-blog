@@ -33,10 +33,10 @@ async function generateDailyArticle() {
         const topic = getRandomTopic(topics);
 
         console.log(`Generating article about: ${topic}`);
-        const content = await aiService.generateArticle(topic);
+        const { title, content } = await aiService.generateArticle(topic);
 
         const newArticle = await Article.create({
-            title: `Article about ${topic}`,
+            title,
             content,
             origin: "automated",
         });
