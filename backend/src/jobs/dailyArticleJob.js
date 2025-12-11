@@ -38,6 +38,7 @@ async function generateDailyArticle() {
         const newArticle = await Article.create({
             title: `Article about ${topic}`,
             content,
+            origin: "automated",
         });
 
         console.log(`✓ Article generated successfully with ID: ${newArticle.id}`);

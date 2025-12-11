@@ -16,6 +16,7 @@ exports.generateNewArticle = async (req, res) => {
         const newArticle = await Article.create({
             title: `Article about ${topic}`,
             content,
+            origin: "user",
         });
 
         res.json(newArticle);

@@ -9,6 +9,15 @@ const Article = sequelize.define("Article", {
     content: {
         type: DataTypes.TEXT,
         allowNull: false,
+    },
+    origin: {
+        // Marks whether the post came from a user prompt or the automated daily job
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: "user",
+        validate: {
+            isIn: [["user", "automated"]],
+        },
     }
 });
 
