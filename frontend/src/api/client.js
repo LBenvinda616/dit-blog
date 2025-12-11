@@ -1,3 +1,8 @@
+// API client: minimal wrappers around backend endpoints.
+// Exports:
+// - fetchArticles(): GET /api/articles → Array<Article>
+// - generateArticle(topic: string): POST /api/articles/generate → Article
+// Handles JSON parsing and error normalization for UI consumption.
 // Default to relative /api so Vite dev proxy handles CORS; allow override for deployments.
 const base = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '');
 

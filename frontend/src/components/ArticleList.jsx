@@ -1,3 +1,7 @@
+// ArticleList component: renders a vertical list of ArticleCard.
+// Props:
+// - articles: Array<Article>; list to display
+// - onSelectArticle: (id: number) => void; forwards click selection
 import ArticleCard from './ArticleCard';
 
 function ArticleList({ articles, onRefresh }) {

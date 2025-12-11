@@ -1,3 +1,8 @@
+// ArticleCard component: compact preview of a single article.
+// Props:
+// - article: { id, title, origin, createdAt, content }
+// - onSelect: (id: number) => void; click handler to open detail view
+// Renders origin badge and creation date for quick scan in lists.
 import { useState } from 'react';
 
 function ArticleCard({ article, onReadMore }) {

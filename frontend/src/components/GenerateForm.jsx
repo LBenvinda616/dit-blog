@@ -1,3 +1,8 @@
+// GenerateForm component: collects a topic and triggers article generation.
+// Props:
+// - onGenerate: (topic: string) => Promise<void>; submit handler
+// - status: string; optional status message to display during/after generation
+// Behavior: debounces empty submissions and surfaces errors via parent banner.
 import { useState } from 'react';
 
 const SUGGESTIONS = [

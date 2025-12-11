@@ -1,3 +1,7 @@
+// Navbar component: top-level navigation between Home and Archive views.
+// Props:
+// - currentPage: string ('home' | 'archive') used to highlight active tab
+// - onNavigate: (targetPage: 'home' | 'archive') => void; navigation handler
 function Navbar({ currentPage, onNavigate }) {
     return (
         <nav className="navbar">

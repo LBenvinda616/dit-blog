@@ -1,3 +1,8 @@
+// ArchivePage: displays all articles with back navigation.
+// Props:
+// - articles: Array<Article>
+// - onSelectArticle: (id: number, nextPage: 'detail') => void
+// - onBack: () => void; navigates back to home
 import ArticleTitle from '../components/ArticleTitle';
 
 function ArchivePage({ articles, onSelectArticle, onBack }) {

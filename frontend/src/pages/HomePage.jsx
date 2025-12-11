@@ -1,3 +1,8 @@
+// HomePage: shows latest articles and provides refresh + drill-down.
+// Props:
+// - articles: Array<Article>
+// - onRefresh: () => Promise<void>; triggers re-fetch from backend
+// - onSelectArticle: (id: number, nextPage: 'detail') => void; opens detail
 import ArticleCard from '../components/ArticleCard';
 
 function HomePage({ articles, onRefresh, onSelectArticle }) {

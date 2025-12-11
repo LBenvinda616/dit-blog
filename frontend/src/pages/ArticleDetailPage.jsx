@@ -1,3 +1,7 @@
+// ArticleDetailPage: full view of a single article.
+// Props:
+// - article: Article | null; when null, renders a fallback
+// - onBack: () => void; navigates back to previous list view
 function ArticleDetailPage({ article, onBack }) {
     if (!article) {
         return (

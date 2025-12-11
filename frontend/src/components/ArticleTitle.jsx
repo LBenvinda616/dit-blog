@@ -1,3 +1,7 @@
+// ArticleTitle component: standardized title rendering with origin badge.
+// Props:
+// - title: string; article headline
+// - origin: 'user' | 'automated'; used to color-code the badge
 function ArticleTitle({ article, onClick }) {
     const created = article.createdAt ? new Date(article.createdAt) : null;
     const origin = article.origin === 'automated' ? 'automated' : 'user';
