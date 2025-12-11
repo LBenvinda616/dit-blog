@@ -9,6 +9,11 @@ REGION="${AWS_DEFAULT_REGION:-eu-north-1}"
 ACCOUNT_ID="${AWS_ACCOUNT_ID:-828414850187}"
 REPO_URI="$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com"
 
+cd "$COMPOSE_DIR/.."
+
+echo "Pulling latest code from GitHub..."
+git pull origin main
+
 cd "$COMPOSE_DIR"
 
 echo "Logging in to ECR..."
