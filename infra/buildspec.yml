@@ -29,7 +29,13 @@ phases:
       - docker push $BACKEND_REPO_URI:$IMAGE_TAG
       - echo Build completed
       - echo Triggering deployment...
-      - aws codebuild start-build --project-name dit-blog-deploy --region $AWS_DEFAULT_REGION
+      - |
+        DEPLOY_BUILD_ID=$(aws codebuild start-build \
+          --project-name dit-blog-deploy \
+          --region $AWS_DEFAULT_REGION \
+          --query 'build.id' \
+          --output text)
+      - echo "Deploy build started: $DEPLOY_BUILD_ID"
 
 env:
   variables:
