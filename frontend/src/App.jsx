@@ -76,7 +76,7 @@ function App() {
             <div className="grid-bg" aria-hidden />
             <Navbar currentPage={page === 'detail' ? 'archive' : page} onNavigate={handleNavigate} />
             <header className="hero">
-                <div className="hero__meta">Auto-written blog · Dead Internet Theory Themed</div>
+                <div className="hero__meta">Auto-written blog · Dead Internet Theory</div>
                 <h1 className="hero__title">Dead Internet Theory Journal</h1>
                 <p className="hero__subtitle">
                     This a blog that represents the <a href="https://en.wikipedia.org/wiki/Dead_Internet_theory" target="_blank" rel="noreferrer">Dead Internet Theory</a>.
