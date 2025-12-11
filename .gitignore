@@ -1,1 +1,3 @@
 backend/.env
+AWS_EC2_DEPLOYMENT.md
+DOCKER_DEPLOYMENT.md

@@ -23,9 +23,7 @@ services:
       retries: 5
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: 828414850187.dkr.ecr.eu-north-1.amazonaws.com/dit-blog-backend:latest
     container_name: dit_blog_backend
     restart: unless-stopped
     environment:
@@ -46,11 +44,7 @@ services:
         condition: service_healthy
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-      args:
-        VITE_API_BASE_URL: http://13.51.161.44:3000/api
+    image: 828414850187.dkr.ecr.eu-north-1.amazonaws.com/dit-blog-frontend:latest
     container_name: dit_blog_frontend
     restart: unless-stopped
     ports:

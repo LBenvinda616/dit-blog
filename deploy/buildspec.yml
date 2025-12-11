@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Starting remote deploy via SSM"
+      - if [ -z "$INSTANCE_ID" ]; then echo "INSTANCE_ID not set"; exit 1; fi
+      - REPOSITORY_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - |
+        aws ssm send-command \
+          --instance-ids "$INSTANCE_ID" \
+          --document-name "AWS-RunShellScript" \
+          --comment "Deploy dit-blog containers" \
+          --parameters commands="[\
+            'cd /home/ubuntu/dit-blog',\
+            'aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $REPOSITORY_URI',\
+            'docker compose pull',\
+            'docker compose up -d'\
+          ]"
+
+artifacts:
+  files: []
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: "828414850187"
+    AWS_DEFAULT_REGION: "eu-north-1"
+    # Set INSTANCE_ID in the CodeBuild project environment
