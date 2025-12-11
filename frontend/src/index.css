@@ -198,6 +198,45 @@ code {
     color: var(--accent);
 }
 
+.generate__suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.generate__hint {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chip {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 13px;
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+
+.chip:hover {
+    border-color: var(--accent);
+    background: rgba(0, 242, 195, 0.08);
+    transform: translateY(-1px);
+}
+
+.chip--ghost {
+    color: var(--accent);
+    border-color: rgba(0, 242, 195, 0.4);
+}
+
 .input {
     flex: 1;
     min-width: 220px;
@@ -301,6 +340,11 @@ code {
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
+}
+
+.card__badge-row {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .card__title {

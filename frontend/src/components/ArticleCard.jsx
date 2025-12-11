@@ -18,9 +18,11 @@ function ArticleCard({ article, onReadMore }) {
             <div className="card__preview-header">
                 <h3 className="card__title">{article.title}</h3>
                 <div className="card__meta">
-                    <span className={badgeClass}>{badgeText}</span>
                     {created && <span className="card__date">{created.toLocaleString()}</span>}
                 </div>
+            </div>
+            <div className="card__badge-row">
+                <span className={badgeClass}>{badgeText}</span>
             </div>
             <p className="card__preview-text">{snippet}</p>
             {onReadMore && (
