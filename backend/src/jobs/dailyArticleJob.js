@@ -9,7 +9,7 @@ const path = require("path");
  * @returns {string[]} List of topics.
  */
 function loadTopics() {
-    const topicsPath = path.join(__dirname, "../article_topics.json");
+    const topicsPath = path.join(__dirname, "../../article_topics.json");
     try {
         const data = fs.readFileSync(topicsPath, "utf-8");
         return JSON.parse(data);
